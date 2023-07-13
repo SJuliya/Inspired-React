@@ -2,6 +2,9 @@ import {RouterProvider, createBrowserRouter, createRoutesFromElements, Route} fr
 import {MainPage} from "./Components/MainPage/MainPage";
 import {ErrorPage} from "./Components/ErrorPage/ErrorPage";
 import {Root} from "./routes/Root";
+import {useDispatch} from "react-redux";
+import {useEffect} from "react";
+import {fetchNavigation} from "./features/navigationSlice";
 
 const router = createBrowserRouter(
         createRoutesFromElements(
@@ -16,4 +19,12 @@ const router = createBrowserRouter(
     )
 )
 
-export const App = () => <RouterProvider router={router} />
+export const App = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchNavigation());
+    }, [dispatch])
+
+    return <RouterProvider router={router}/>
+}
