@@ -20,7 +20,10 @@ export const MainPage = ({gender = 'women'}) => {
             <Container>
                 <h2 className={style.title}>Новинки</h2>
                 <ul className={style.list}>
-                    {goodsList.map(item => <Product key={item.id} {...item} />)}
+                    {goodsList.map(item =>
+                        <li key={item.id}>
+                            <Product {...item} />
+                        </li>)}
                 </ul>
             </Container>
         </section>
