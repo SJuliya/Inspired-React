@@ -1,7 +1,18 @@
 import style from "./Color.module.scss";
+import {useRef, useEffect} from "react";
+import cn from "classnames";
 
 export const Color = ({color, check}) => {
+    const colorRef = useRef(null);
+
+    useEffect(() => {
+        colorRef.current.style.setProperty("--data-color", color)
+    }, [color])
+
     return (
-        <li>{color}</li>
-    )
-}
+        <li
+            className={cn(style.color, check ? style.colorCheck : "")}
+            ref={colorRef}
+        />
+    );
+};
