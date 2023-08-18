@@ -14,7 +14,7 @@ const {activeGender, genderList, categories} = useSelector(state => state.naviga
                         className={({isActive}) =>
                             cn(style.link, (isActive || gender === activeGender ) && style.linkActive)
                         }
-                             to={gender}>
+                             to={`/catalog/${gender}`}>
                         {categories[gender].title}
                     </NavLink>
                 </li>
