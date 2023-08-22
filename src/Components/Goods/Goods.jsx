@@ -1,15 +1,12 @@
-import {Container} from "../Components/Layout/Container/Container";
-import {Product} from "../Components/Product/Product";
+import {Container} from "../Layout/Container/Container";
+import {Product} from "../Product/Product";
 import {useSelector} from "react-redux";
 import style from './Goods.module.scss';
 
-export const Goods = ({category}) => {
+export const Goods = ({categoryData}) => {
     const {goodsList} = useSelector(state => state.goods);
-    const {activeGender, categories} = useSelector(state => state.navigation);
 
-    const title = category
-        ? categories[activeGender]?.list.find(item => item.slug === category).title
-        : 'Новинки';
+    const title = categoryData?.title ?? 'Новинки';
 
     return (
         <section className={style.goods}>
