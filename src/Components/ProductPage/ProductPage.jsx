@@ -7,8 +7,8 @@ import {useParams} from "react-router-dom";
 import {API_URL} from "../../const";
 import cn from "classnames";
 import {ColorList} from "../ColorList/ColorList";
-import {ReactComponent as Like} from "../../assets/heart.svg";
 import {Count} from "../Count/Count";
+import {BtnLike} from "../BtnLike/BtnLike";
 
 export const ProductPage = () => {
     const dispatch = useDispatch();
@@ -74,13 +74,12 @@ export const ProductPage = () => {
 
                         <button className={style.addCart} type='submit'>В корзину</button>
 
-                        <button
+                        <span
                             className={style.favorite}
                             aria-label='Добавить в избранное'
-                            type='button'
                         >
-                            <Like />
-                        </button>
+                            <BtnLike id={id} />
+                        </span>
                     </div>
                 </form>
             </Container>
