@@ -1,44 +1,50 @@
 import style from './Pagination.module.scss';
 import {NavLink, useLocation} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import cn from 'classnames';
-import {setPage} from "../../features/goodsSlice";
+import {useEffect, useState} from "react";
+import {ReactComponent as PrevSVG} from '../../assets/arrow_left.svg';
+import {ReactComponent as NextSVG} from '../../assets/arrow_right.svg';
 
 export const Pagination = () => {
+    const [pagePagination, setPagePagination] = useState('');
     const pathname = useLocation().pathname;
     const {page, pages} = useSelector(state => state.goods);
-    const dispatch = useDispatch();
+
+    useEffect(() => {
+        setPagePagination(page);
+    }, [page, setPagePagination]);
 
     const handlePageChange = (newPage => {
-        dispatch(setPage(newPage))
+        setPagePagination(newPage);
     });
 
     const handlePrevPage = () => {
-        if (page > 1) {
-            handlePageChange(page - 1);
+        if (pagePagination > 1) {
+            handlePageChange(pagePagination - 1);
         }
     };
 
     const handleNextPage = () => {
-        if (page < pages) {
-            handlePageChange(page + 1)
+        if (pagePagination < pages) {
+            handlePageChange(pagePagination + 1)
         }
     };
 
     const renderPaginationItems = () => {
         const paginationItems = [];
 
-        let startPage = Math.max(1, page - 1);
-        console.log("-> startPage", startPage);
+        let startPage = (pagePagination === pages) && (pages >= 3)
+            ? pagePagination - 2 : Math.max(1, pagePagination - 1);
+
         let endPage = Math.min(startPage + 2, pages);
-        console.log("-> endPage", endPage);
 
         for (let i = startPage; i <= endPage; i++) {
             paginationItems.push(
                 <li key={i} className={style.item}>
                     <NavLink
                         to={`${pathname}?page=${i}`}
-                        className={cn(style.link, i === +page ?? style.linkActive)}
+                        className={cn(style.link, i === pagePagination ?? style.linkActive)}
                         onClick={() => handlePageChange(i)}
                     >
                         {i}
@@ -51,21 +57,22 @@ export const Pagination = () => {
     }
 
     return (
+        pages > 1 &&
         <div className={style.pagination}>
             <button
                 className={style.arrow}
                 onClick={handlePrevPage}
-                disabled={page <= 2}
+                disabled={pagePagination <= 2}
             >
-                &lt;
+                <PrevSVG />
             </button>
             <ul className={style.list}>{renderPaginationItems()}</ul>
             <button
                 className={style.arrow}
                 onClick={handleNextPage}
-                disabled={page >= pages - 1 || pages <= 3}
+                disabled={pagePagination >= pages - 1 || pages <= 3}
             >
-                &gt;
+                <NextSVG />
             </button>
         </div>
     )
