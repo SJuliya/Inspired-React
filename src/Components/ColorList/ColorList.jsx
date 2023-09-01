@@ -3,10 +3,10 @@ import {useSelector} from "react-redux";
 import {ColorLabel} from "./ColorLabel/ColorLabel";
 import {Color} from "./Color/Color";
 
-export const ColorList = ({colors, selectedColor, handlerColorChange}) => {
+export const ColorList = ({colors, selectedColor, handleColorChange}) => {
     const {colorsList} = useSelector(state => state.color);
 
-    return handlerColorChange ? (
+    return handleColorChange ? (
         <div className={style.colorList}>
             {colors?.map((id, i) => {
                 const color = colorsList.find(color => color.id === id);
@@ -15,7 +15,7 @@ export const ColorList = ({colors, selectedColor, handlerColorChange}) => {
                     color={color}
                     check={!i}
                     selectedColor={selectedColor}
-                    handlerColorChange={handlerColorChange}
+                    handleColorChange={handleColorChange}
                 />
             })}
         </div>

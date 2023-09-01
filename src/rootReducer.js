@@ -3,12 +3,14 @@ import navigationReducer from "./features/navigationSlice";
 import colorsReducer from "./features/colorsSlice";
 import goodsReducer from "./features/goodsSlice";
 import productReducer from "./features/productSlice";
-import favoritesSlice from "./features/favoritesSlice";
+import favoritesReducer from "./features/favoritesSlice";
+import cartReducer from "./features/cartSlice";
 
 export const rootReducer = combineReducers({
     navigation: navigationReducer,
     color: colorsReducer,
     goods: goodsReducer,
     product: productReducer,
-    favorites: favoritesSlice,
+    favorites: favoritesReducer,
+    cart: cartReducer,
 });

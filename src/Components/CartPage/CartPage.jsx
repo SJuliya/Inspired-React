@@ -1,5 +1,11 @@
+import {Cart} from "./Cart/Cart";
+import {Order} from "./Order/Order";
+
 export const CartPage = () => {
     return (
-        <div>CartPage</div>
+        <>
+            <Cart />
+            <Order />
+        </>
     )
 }

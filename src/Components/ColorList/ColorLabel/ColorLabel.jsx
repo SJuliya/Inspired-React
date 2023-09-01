@@ -1,7 +1,7 @@
 import style from "./ColorLabel.module.scss";
 import {useRef, useEffect} from "react";
 
-export const ColorLabel = ({color, check, selectedColor, handlerColorChange}) => {
+export const ColorLabel = ({color, check, selectedColor, handleColorChange}) => {
     const colorRef = useRef(null);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export const ColorLabel = ({color, check, selectedColor, handlerColorChange}) =>
                 name='color'
                 value={color?.title}
                 checked={selectedColor ? selectedColor === color?.title : check}
-                onChange={handlerColorChange}
+                onChange={handleColorChange}
             />
             <span className={style.colorCheck}></span>
         </label>
