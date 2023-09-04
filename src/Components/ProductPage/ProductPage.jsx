@@ -52,7 +52,7 @@ export const ProductPage = () => {
     }, [gender, category, id, dispatch]);
 
     useEffect(() => {
-        if (colorsList.length && colors.length) {
+        if (colorsList?.length && colors?.length) {
             setSelectedColor(colorsList.find(color => color.id === colors[0]).title)
         }
     }, [colorsList, colors]);
