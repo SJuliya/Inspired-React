@@ -3,6 +3,7 @@ import {Goods} from "../Goods/Goods.jsx";
 import {useEffect} from "react";
 import {fetchCategory} from "../../features/goodsSlice";
 import {usePageFromSearchParams} from "../../hooks/usePageFromSearchParams";
+import style from './FavoritePage.module.scss';
 
 export const FavoritePage = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,8 @@ export const FavoritePage = () => {
     }, [favorites, page, dispatch]);
 
     return (
-        <Goods title="Избранное" />
+        favorites.length
+            ? <Goods title="Избранное" />
+            : <h3 className={style.empty}>В избранном пусто</h3>
     )
-}
+};
