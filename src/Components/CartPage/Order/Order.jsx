@@ -20,7 +20,7 @@ export const Order = ({cartItems}) => {
         ),
         phone: Yup.string()
             .required('Введите номер телефона')
-            .matches(/^\+\d{1}\(\d{3}\)\-\d{3}\-\d{4}$/, 'Некорректный номер телефона'),
+            .matches(/^\+\d\(\d{3}\)\d{3}-\d{2}-\d{2}$/, 'Некорректный номер телефона'),
         email: Yup.string().email('Некорректный формат').required('Введите email'),
         delivery: Yup.string().required('Выберите способ доставки'),
     });
@@ -67,7 +67,7 @@ export const Order = ({cartItems}) => {
                                 <Field
                                     as={PatternFormat}
                                     className={style.input}
-                                    format='+7(###)###-####'
+                                    format='+7(###)###-##-##'
                                     mask='_'
                                     placeholder='Телефон'
                                     name='phone'

@@ -140,9 +140,9 @@
 }
 
 .sizeItem {
-  width: 46px;
+  min-width: 46px;
   height: 24px;
-  padding: 0;
+  padding: 0 3px;
   display: flex;
   align-items: center;
   justify-content: center;
