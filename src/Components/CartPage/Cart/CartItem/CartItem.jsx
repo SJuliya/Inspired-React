@@ -59,7 +59,9 @@ export const CartItem = ({id, color, size, count, goodsList}) => {
                 className={style.count}
                 count={count}
                 handleDecrement={() => {
-                    handleCountChange(count - 1);
+                    if (count > 1) {
+                        handleCountChange(count - 1);
+                    }
                 }}
                 handleIncrement={() => {
                     handleCountChange(count + 1);
