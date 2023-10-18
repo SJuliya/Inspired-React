@@ -32,9 +32,7 @@ const cartSlice = createSlice({
             if (item) {
                 item.count = count;
             } else {
-                if (size) {
-                    state.cartItems.push({id, color, size, count});
-                }
+                state.cartItems.push({id, color, size, count});
             }
 
             localStorage.setItem('cart', JSON.stringify(state.cartItems));

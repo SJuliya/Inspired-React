@@ -5,6 +5,7 @@ import cn from "classnames";
 import {Count} from "../../../Count/Count";
 import {ReactComponent as DelSVG} from '../../../../assets/del.svg';
 import {addToCart, removeFromCart} from "../../../../features/cartSlice";
+import {NavLink} from "react-router-dom";
 
 export const CartItem = ({id, color, size, count, goodsList}) => {
     const dispatch = useDispatch();
@@ -21,10 +22,14 @@ export const CartItem = ({id, color, size, count, goodsList}) => {
 
     return (
         <article className={style.item}>
-            <img className={style.image} src={`${API_URL}/${item?.pic}`} alt={item?.title} />
+            <NavLink to={`/product/${id}`}>
+                <img className={style.image} src={`${API_URL}/${item?.pic}`} alt={item?.title} />
+            </NavLink>
 
             <div className={style.content}>
-                <h3 className={style.title}>{item?.title}</h3>
+                <NavLink to={`/product/${id}`}>
+                    <h3 className={style.title}>{item?.title}</h3>
+                </NavLink>
                 <p className={style.price}>руб {item?.price}</p>
                 <div className={style.vendorCode}>
                     <span className={style.subtitle}>Артикул</span>
